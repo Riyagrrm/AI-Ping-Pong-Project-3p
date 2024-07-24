@@ -22,9 +22,19 @@ var ball = {
 }
 
 function setup(){
-  var canvas =  createCanvas(700,600);
+  canvas = createCanvas(700,600);
+  canvas.center();
+  canvas.parent('canvas');
+  video = createCapture(VIDEO);
+  video.size(700, 600);
+  video.hide();
+  poseNet = ml5.poseNet(video, modelLoaded);
 }
 
+function modelLoaded()
+{
+  console.log("modelLoaded");
+}
 
 function draw(){
 
@@ -38,6 +48,7 @@ function draw(){
  stroke("black");
  rect(0,0,20,700);
  
+
    //funtion paddleInCanvas call 
    paddleInCanvas();
  
